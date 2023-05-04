@@ -23,13 +23,6 @@ export class Searchbar extends Component {
       <SearchbarHeader className="searchbar">
         <SearchForm className="form" onSubmit={this.handleSubmit}>
           <ButtonSerchForm type="submit" className="button">
-            <img
-              class="search-img"
-              src="../../../img/Vector_search_icon.svg.png"
-              alt="search"
-              width="18"
-              height="18"
-            />
             <ButtonLabel className="button-label">Search</ButtonLabel>
           </ButtonSerchForm>
 
@@ -47,5 +40,5 @@ export class Searchbar extends Component {
 }
 
 Searchbar.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  setQuery: PropTypes.func.isRequired,
 };

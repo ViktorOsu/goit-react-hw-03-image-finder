@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import ImageGalleryItem from './ImageGalleryItem';
+import { ImageGalleryItem } from './ImageGalleryItem';
 import { ImgGallery } from './ImageGallery.styled';
 import { Button } from '../Button/Button';
 import { Modal } from '../Modal/Modal';
