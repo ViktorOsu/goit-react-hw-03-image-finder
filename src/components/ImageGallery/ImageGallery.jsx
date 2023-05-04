@@ -16,6 +16,7 @@ export class ImageGallery extends Component {
     page: 1,
     isModalOpen: false,
     dataModal: { image: '', alt: '' },
+    loadMore: false,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -53,6 +54,9 @@ export class ImageGallery extends Component {
         this.state.page
       );
       this.setState(prev => ({ images: [...prev.images, ...data.hits] }));
+      if (this.state.page * 12 < data.totalHits) {
+        this.setState(() => ({ loadMore: true }));
+      } else this.setState(() => ({ loadMore: false }));
     } catch (error) {
       this.setState({ error: error.messasge });
     } finally {
@@ -84,7 +88,7 @@ export class ImageGallery extends Component {
           ))}
         </ImgGallery>
         {this.state.isLoading && <Loader />}
-        {this.state.images.length > 0 && <Button onClick={this.changePage} />}
+        {this.state.loadMore && <Button onClick={this.changePage} />}
         {this.state.isModalOpen && (
           <Modal image={this.state.dataModal} onClose={this.openModal} />
         )}
